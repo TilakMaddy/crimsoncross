@@ -1,1 +1,1 @@
-# Crimson Cross
+# Crimson

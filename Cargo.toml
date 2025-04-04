@@ -1,9 +1,17 @@
-[package]
-name = "crimsoncross"
-version = "0.1.0"
+[workspace]
+resolver = "2"
+members = ["crates/*", "tools/*"]
+default-members = ["crates/*"]
+
+[workspace.package]
+version = "0.0.0"
 edition = "2024"
+authors = ["TilakMadichetti <tilak.madichetti@gmail.com>"]
+license = "MIT OR Apache-2.0"
+homepage = "https://github.com/TilakMaddy/crimsoncross"
+repository = "https://github.com/TilakMaddy/crimsoncross"
+keywords = ["ethereum", "solidity", "solc", "crypto", "compiler", "ir", "ast"]
+categories = ["compilers", "cryptography", "cryptography::cryptocurrencies"]
 
-[dependencies]
-
-[dev-dependencies]
+[workspace.dependencies]
 revm = "21.0.0"

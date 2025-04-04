@@ -109,10 +109,7 @@ mod simple_contract_creation {
         let ref_tx = evm.replay_commit().unwrap();
 
         // Create contract
-        let ExecutionResult::Success {
-            output: Output::Create(_, Some(address)),
-            ..
-        } = ref_tx
+        let ExecutionResult::Success { output: Output::Create(_, Some(address)), .. } = ref_tx
         else {
             panic!("Failed to create contract: {ref_tx:#?}");
         };
@@ -138,10 +135,6 @@ mod simple_contract_creation {
         };
 
         println!("storage U256(0) at {address}:  {storage0:#?}");
-        assert_eq!(
-            storage0.present_value(),
-            0x42.try_into().unwrap(),
-            "{result:#?}"
-        );
+        assert_eq!(storage0.present_value(), 0x42.try_into().unwrap(), "{result:#?}");
     }
 }
