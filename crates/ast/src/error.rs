@@ -1,10 +1,10 @@
 use std::fmt::Display;
 
-use crate::ciface;
+use crate::cnodes;
 
 #[derive(Debug)]
 pub enum Error {
-    CIFace(ciface::Error),
+    CNode(cnodes::Error),
 }
 
 impl std::error::Error for Error {}
@@ -13,7 +13,7 @@ impl Display for Error {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         writeln!(f, "AST Error:")?;
         match self {
-            Error::CIFace(error) => {
+            Error::CNode(error) => {
                 write!(f, "CIFace - ")?;
                 write!(f, "{}", error)?;
             }
