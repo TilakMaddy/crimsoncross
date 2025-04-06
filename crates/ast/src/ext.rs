@@ -6,7 +6,7 @@ use crate::cnodes::{CAssignment, CInstruction, COperand};
 /// ## Operand Ty
 ///
 /// ### Used in instructions and assignments
-/// * VarIdent - should refer to existing initd. variable
+/// * VarIdent - should refer to an initialized variable
 /// * Label - should refer to label identifier with `@` prepended
 /// * Const - literal whose value is a Signed Int or Hex digit
 #[derive(Debug)]
@@ -25,7 +25,7 @@ pub enum OperandTy {
 /// Format:
 /// %var = instruction | operand
 #[derive(Debug)]
-pub enum CAssignExpr {
+pub enum CAssignExprTy {
     Instruction(Box<CInstruction>),
     Operand(Box<COperand>),
 }
@@ -38,12 +38,14 @@ pub enum CAssignExpr {
 /// Non-EVM compatible Opcodes will boil down to EVM compatible opcodes eventually in the
 /// compilation pipeline
 #[derive(Debug)]
-pub enum COpcode {
+pub enum COpcodeTy {
     LOG,
     INVOKE,
 }
 
 /// ## Crimson Statement
+///
+/// Crimson statements make up a block
 #[derive(Debug)]
 pub enum CStmtTy {
     Instruction(Box<CInstruction>),
