@@ -26,10 +26,10 @@ pub fn report_diagctx(diag_ctx: DiagCtx) {
         if let Some(note) = diag.note {
             report = report.with_note(note);
         }
-        reports.push(report);
+        reports.push(report.finish());
     }
 
     for report in reports {
-        report.finish().print(("ir-content", Source::from(&diag_ctx.program))).unwrap();
+        report.eprint(("ir-content", Source::from(&diag_ctx.program))).unwrap();
     }
 }

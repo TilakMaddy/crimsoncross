@@ -61,6 +61,9 @@ impl Diag {
     pub fn error() -> DiagBuilder {
         DiagBuilder { ty: Some(DiagTy::Error), ..Default::default() }
     }
+    pub fn emit(self, diag_ctx: &mut DiagCtx) {
+        diag_ctx.emit(self);
+    }
 }
 
 #[derive(Default)]
@@ -74,8 +77,8 @@ pub struct DiagBuilder {
 }
 
 impl DiagBuilder {
-    pub fn span(mut self, span: Span) -> Self {
-        self.span = Some(span);
+    pub fn span(mut self, span: impl Into<Span>) -> Self {
+        self.span = Some(span.into());
         self
     }
     pub fn msg(mut self, message: impl AsRef<str>) -> DiagBuilder {
