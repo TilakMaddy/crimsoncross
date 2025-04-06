@@ -12,5 +12,6 @@ categories.workspace = true
 [dependencies]
 ariadne = "0.5.1"
 crimson_ast = { path = "../ast", package = "crimson-ast" }
-indoc = "2"
 
+[dev-dependencies]
+indoc = "2"
