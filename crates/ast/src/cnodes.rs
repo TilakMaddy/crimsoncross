@@ -1,7 +1,17 @@
-mod error;
+//! List of AST nodes to represent the Crimson IR
 
-pub mod consts;
-pub mod label_idents;
-pub mod labels;
+#![allow(unused)]
 
-pub use error::*;
+pub enum CConst {
+    SignedInt { sign: CConstSign, value: String },
+    HexDigit(String),
+}
+
+pub enum CConstSign {
+    Plus,
+    Minus,
+}
+
+pub struct CLabelIdent(String);
+
+pub struct CLabel;

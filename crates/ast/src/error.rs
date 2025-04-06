@@ -1,10 +1,8 @@
 use std::fmt::Display;
 
-use crate::cnodes;
-
 #[derive(Debug)]
 pub enum Error {
-    CNode(cnodes::Error),
+    CNode(String),
 }
 
 impl std::error::Error for Error {}
@@ -14,7 +12,7 @@ impl Display for Error {
         writeln!(f, "AST Error:")?;
         match self {
             Error::CNode(error) => {
-                write!(f, "CIFace - ")?;
+                write!(f, "CNode - ")?;
                 write!(f, "{}", error)?;
             }
         }
