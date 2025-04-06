@@ -1,5 +1,5 @@
 [package]
-name = "crimsoncross-parse"
+name = "crimson-parse"
 version.workspace = true
 edition.workspace = true
 authors.workspace = true

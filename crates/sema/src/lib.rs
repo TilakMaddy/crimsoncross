@@ -1,14 +1,5 @@
-pub fn add(left: u64, right: u64) -> u64 {
-    left + right
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
-}
+//! # Semantic Analysis
+//!
+//! Semantic analyis is a multi step process performed on the AST that collects all the errors
+//! if any, to report to the user at compile time.
+//!

@@ -1,5 +1,5 @@
 [package]
-name = "crimsoncross-compiler"
+name = "crimson-compiler"
 default-run = "crimson"
 
 version.workspace = true
@@ -17,3 +17,6 @@ path = "./src/lib.rs"
 [[bin]]
 name = "crimson"
 path = "./src/main.rs"
+
+[dependencies]
+crimson_ast = { path = "../ast", package = "crimson-ast" }

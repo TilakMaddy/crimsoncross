@@ -1,5 +1,5 @@
 [package]
-name = "crimson-ast"
+name = "crimson-diag"
 version.workspace = true
 edition.workspace = true
 authors.workspace = true
@@ -10,3 +10,5 @@ keywords.workspace = true
 categories.workspace = true
 
 [dependencies]
+ariadne = "0.5.1"
+crimson_ast = { path = "../ast", package = "crimson-ast" }

@@ -1,7 +1,8 @@
-pub mod cnodes;
 mod error;
-mod ext;
 mod macros;
-mod span;
+
+pub mod cnodes;
+pub mod ext;
+pub mod span;
 
 pub use error::{Error, Result};

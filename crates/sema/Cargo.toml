@@ -1,5 +1,5 @@
 [package]
-name = "crimosncross-sema"
+name = "crimson-sema"
 version.workspace = true
 edition.workspace = true
 authors.workspace = true
