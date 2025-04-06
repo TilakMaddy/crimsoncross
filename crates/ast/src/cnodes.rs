@@ -2,16 +2,61 @@
 
 #![allow(unused)]
 
-pub enum CConst {
-    SignedInt { sign: CConstSign, value: String },
-    HexDigit(String),
-}
+use crate::{ast_node, ext::*};
 
-pub enum CConstSign {
-    Plus,
-    Minus,
-}
+// Identifies a function or a block
+ast_node!(
+    struct CLabelIdent {
+        name: String,
+    }
+);
 
-pub struct CLabelIdent(String);
+// Variable being assigned to. (unique)
+ast_node!(
+    struct CVarAssignee {
+        ident: String,
+    }
+);
 
-pub struct CLabel;
+// Arguments to an operation Variable / Const / Label
+ast_node!(
+    struct COperand {
+        ty: OperandTy,
+    }
+);
+
+ast_node!(
+    struct CInstruction {
+        opcode: COpcode,
+        operands: Vec<COperand>,
+    }
+);
+
+ast_node!(
+    struct CAssignment {
+        var: CVarAssignee,
+        expr: CAssignExpr,
+    }
+);
+
+ast_node!(
+    struct CFunction {
+        is_entrypoint: bool,
+        label_ident: String,
+        blocks: Vec<CBlock>,
+    }
+);
+
+ast_node!(
+    struct CBlock {
+        is_entrypoint: bool,
+        label_ident: CLabelIdent,
+        statements: Vec<CStatement>,
+    }
+);
+
+ast_node!(
+    struct CStatement {
+        ty: CStmtTy,
+    }
+);
