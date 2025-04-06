@@ -24,7 +24,6 @@ pub struct DiagCtx {
 #[derive(Debug, Clone)]
 pub struct Diag {
     pub ty: DiagTy,
-    pub span: Span,
     pub message: String,
     pub labels: Vec<DiagLabel>,
     pub help: Option<String>,
@@ -69,7 +68,6 @@ impl Diag {
 #[derive(Default)]
 pub struct DiagBuilder {
     ty: Option<DiagTy>,
-    span: Option<Span>,
     message: Option<String>,
     labels: Vec<DiagLabel>,
     help: Option<String>,
@@ -77,10 +75,6 @@ pub struct DiagBuilder {
 }
 
 impl DiagBuilder {
-    pub fn span(mut self, span: impl Into<Span>) -> Self {
-        self.span = Some(span.into());
-        self
-    }
     pub fn msg(mut self, message: impl AsRef<str>) -> DiagBuilder {
         self.message = Some(message.as_ref().to_string());
         self
@@ -100,7 +94,6 @@ impl DiagBuilder {
     pub fn build(self) -> Diag {
         Diag {
             ty: self.ty.expect("ty not provided"),
-            span: self.span.expect("span not provided"),
             message: self.message.expect("message not provided"),
             labels: self.labels,
             help: self.help,
