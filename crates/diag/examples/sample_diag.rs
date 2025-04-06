@@ -16,14 +16,7 @@ fn main() {
     #[rustfmt::skip]
     Diag::error()
         .msg("bad programming language")
-        .label((17..19).into(), "python def sucks!")
-        .build()
-        .emit(&mut diag_ctx);
-
-    #[rustfmt::skip]
-    Diag::error()
-        .msg("bad programming language")
-        .label((17..19).into(), "python def sucks!")
+        .label(17..19, "python def sucks!")
         .build()
         .emit(&mut diag_ctx);
 

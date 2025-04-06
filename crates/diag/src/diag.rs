@@ -5,10 +5,11 @@
 //! Access pattern
 //! ```no_run
 //! ##[rustfmt::skip]
-//! let x = Diag::warning()
-//!     .span(elem.span)
-//!     .msg("value exceeds bound - 2^256 - 1")
-//!     .build();
+//! Diag::error()
+//!    .msg("Invalid token")
+//!    .label((17..18).into(), "Only {, }, < or > is allowed")
+//!    .build()
+//!    .emit(&mut diag_ctx);
 //! ```
 
 use crimson_ast::span::Span;
@@ -87,8 +88,8 @@ impl DiagBuilder {
         self.help = Some(note.as_ref().to_string());
         self
     }
-    pub fn label(mut self, span: Span, message: impl AsRef<str>) -> DiagBuilder {
-        self.labels.push(DiagLabel { span, message: message.as_ref().to_string() });
+    pub fn label(mut self, span: impl Into<Span>, message: impl AsRef<str>) -> DiagBuilder {
+        self.labels.push(DiagLabel { span: span.into(), message: message.as_ref().to_string() });
         self
     }
     pub fn build(self) -> Diag {
